@@ -1,25 +1,19 @@
 package ArrListLinkedList;
 
+import java.util.Arrays;
+
 public class ArrayList<T> implements List<T> {
-    private static final int LIST_SIZE_BY_DEFAULT = 10;
     private Object[] val;
     private int size = 0;
     private int index;
 
     public ArrayList() {
-        this.val = new Object[LIST_SIZE_BY_DEFAULT];
-        this.size = LIST_SIZE_BY_DEFAULT;
+        this.val = new Object[size];
     }
 
     @Override
     public T get(int i) throws Exception {
-        if (i > this.index - 1) {
-            throw new Exception("ArrayIndexOutOfBound");
-        }
-
-        if (i < 0) {
-            throw new Exception("wrong index or value");
-        }
+        indexChecker(i);
         return (T) this.val[i];
     }
 
@@ -36,16 +30,8 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public void remove(int i) throws Exception {
-        if (i > this.index - 1) {
-            throw new Exception("ArrayIndexOutOfBound");
-        }
-
-        if (i < 0) {
-            throw new Exception("wrong index or value");
-        }
-
+        indexChecker(i);
         System.out.println("Object removed: " + this.val[i]);
-
         for (int j = 0; j < this.val.length - 1; j++) {
             val[j] = val[j + 1];
         }
@@ -58,7 +44,7 @@ public class ArrayList<T> implements List<T> {
     }
 
     private void increaseArraySize() {
-        this.size = this.size+LIST_SIZE_BY_DEFAULT;
+//        size = this.size;
         Object updateVal[] = new Object[this.size];
         for (int i = 0; i < val.length; i++) {
             updateVal[i] = val[i];
@@ -66,5 +52,19 @@ public class ArrayList<T> implements List<T> {
         this.val=updateVal;
         System.out.println("index: " + this.index + ", size: "
                 + this.size + ", data size: " + this.val.length);
+    }
+
+    public void increaseSize(int newSize) {
+        val = Arrays.copyOf(val, newSize);
+    }
+
+    public void indexChecker(int i) throws Exception {
+        if (i > this.index - 1) {
+            throw new Exception("ArrayIndexOutOfBound");
+        }
+
+        if (i < 0) {
+            throw new Exception("wrong index or value");
+        }
     }
 }
