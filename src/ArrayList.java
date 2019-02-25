@@ -64,10 +64,7 @@ public class ArrayList<T> implements List<T> {
             updateVal[i] = val[i];
         }
         this.val=updateVal;
-
         System.out.println("index: " + this.index + ", size: "
                 + this.size + ", data size: " + this.val.length);
     }
-
-
 }

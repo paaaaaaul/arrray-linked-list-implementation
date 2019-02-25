@@ -6,19 +6,16 @@ public class LinkedList<T> implements List<T> {
     private Node<T> last;
 
     // создать отдельный класс с тестами
-
     private static class Node<T> {
         T item;
         Node<T> next;
         Node<T> previous;
-
         Node(Node<T> previous, T element, Node<T> next)  {
             this.item = element;
             this.next = next;
             this.previous = previous;
         }
     }
-
 
     @Override
     public T get(int indexOfElement) {
@@ -57,7 +54,6 @@ public class LinkedList<T> implements List<T> {
         for (int i = 0; i < indexOfElement; i++) {
             current = current.next;
         }
-
         if (0 == indexOfElement) {
             first = first.next;
             first.previous = null;
