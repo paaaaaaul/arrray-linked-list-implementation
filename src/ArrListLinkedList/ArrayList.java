@@ -44,7 +44,6 @@ public class ArrayList<T> implements List<T> {
     }
 
     private void increaseArraySize() {
-//        size = this.size;
         Object updateVal[] = new Object[this.size];
         for (int i = 0; i < val.length; i++) {
             updateVal[i] = val[i];
@@ -52,10 +51,6 @@ public class ArrayList<T> implements List<T> {
         this.val=updateVal;
         System.out.println("index: " + this.index + ", size: "
                 + this.size + ", data size: " + this.val.length);
-    }
-
-    public void increaseSize(int newSize) {
-        val = Arrays.copyOf(val, newSize);
     }
 
     public void indexChecker(int i) throws Exception {
